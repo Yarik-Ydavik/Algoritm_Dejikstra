@@ -11,7 +11,7 @@ import SwiftUI
 struct Algoritm_DejikstraApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MapView()
         }
     }
 }

@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D79FE51C2A65C6F700B38A22 /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FE51B2A65C6F700B38A22 /* RoutePoint.swift */; };
+		D7B7AE512A644A660024CC38 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE502A644A660024CC38 /* MapView.swift */; };
+		D7B7AE552A644AC80024CC38 /* AlgoritmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE542A644AC80024CC38 /* AlgoritmViewModel.swift */; };
+		D7B7AE592A6463040024CC38 /* ZakazView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE582A6463040024CC38 /* ZakazView.swift */; };
 		D7E88B782A63263100010AFD /* Algoritm_DejikstraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E88B772A63263100010AFD /* Algoritm_DejikstraApp.swift */; };
-		D7E88B7A2A63263100010AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E88B792A63263100010AFD /* ContentView.swift */; };
 		D7E88B7C2A63263200010AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E88B7B2A63263200010AFD /* Assets.xcassets */; };
 		D7E88B7F2A63263200010AFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E88B7E2A63263200010AFD /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D79FE5182A6522F700B38A22 /* Algoritm-Dejikstra-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Algoritm-Dejikstra-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D79FE51B2A65C6F700B38A22 /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
+		D7B7AE502A644A660024CC38 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D7B7AE542A644AC80024CC38 /* AlgoritmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgoritmViewModel.swift; sourceTree = "<group>"; };
+		D7B7AE582A6463040024CC38 /* ZakazView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakazView.swift; sourceTree = "<group>"; };
 		D7E88B742A63263100010AFD /* Algoritm_Dejikstra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algoritm_Dejikstra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E88B772A63263100010AFD /* Algoritm_DejikstraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algoritm_DejikstraApp.swift; sourceTree = "<group>"; };
-		D7E88B792A63263100010AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7E88B7B2A63263200010AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7E88B7E2A63263200010AFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +39,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D79FE51A2A65C6BD00B38A22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D79FE51B2A65C6F700B38A22 /* RoutePoint.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D7B7AE572A6462E30024CC38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7AE502A644A660024CC38 /* MapView.swift */,
+				D7B7AE582A6463040024CC38 /* ZakazView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D7E88B6B2A63263100010AFD = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +75,11 @@
 		D7E88B762A63263100010AFD /* Algoritm_Dejikstra */ = {
 			isa = PBXGroup;
 			children = (
+				D79FE5182A6522F700B38A22 /* Algoritm-Dejikstra-Info.plist */,
 				D7E88B772A63263100010AFD /* Algoritm_DejikstraApp.swift */,
-				D7E88B792A63263100010AFD /* ContentView.swift */,
+				D7B7AE572A6462E30024CC38 /* View */,
+				D79FE51A2A65C6BD00B38A22 /* Model */,
+				D7B7AE542A644AC80024CC38 /* AlgoritmViewModel.swift */,
 				D7E88B7B2A63263200010AFD /* Assets.xcassets */,
 				D7E88B7D2A63263200010AFD /* Preview Content */,
 			);
@@ -137,8 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7E88B7A2A63263100010AFD /* ContentView.swift in Sources */,
 				D7E88B782A63263100010AFD /* Algoritm_DejikstraApp.swift in Sources */,
+				D79FE51C2A65C6F700B38A22 /* RoutePoint.swift in Sources */,
+				D7B7AE512A644A660024CC38 /* MapView.swift in Sources */,
+				D7B7AE592A6463040024CC38 /* ZakazView.swift in Sources */,
+				D7B7AE552A644AC80024CC38 /* AlgoritmViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +305,8 @@
 				DEVELOPMENT_TEAM = ALLT8W45BY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Algoritm-Dejikstra-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Кинь координаты по- братски";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +336,8 @@
 				DEVELOPMENT_TEAM = ALLT8W45BY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Algoritm-Dejikstra-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Кинь координаты по- братски";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

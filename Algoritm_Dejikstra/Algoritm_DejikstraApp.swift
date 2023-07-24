@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Algoritm_DejikstraApp: App {
+    @StateObject private var vm = AlgoritmViewModel()
+    
     var body: some Scene {
         WindowGroup {
             MapView()
+                .environmentObject(vm)
         }
     }
 }

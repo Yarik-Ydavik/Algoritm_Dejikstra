@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewZakaz: View {
     @Binding var button: Bool
+    @EnvironmentObject private var vm: AlgoritmViewModel
     
     var body: some View {
         ZStack () {
@@ -19,6 +20,11 @@ struct NewZakaz: View {
             HStack ( ) {
                 Button("Принять заказ") {
                     withAnimation {
+                        guard let element: RoutePoint = vm.routePoints.randomElement() else {
+                            return
+                        }
+                        vm.routePoints.remove(at: vm.routePoints.firstIndex(where: { $0.coordinate.latitude == element.coordinate.latitude })!)
+                        vm.zakazGeo.append(element)
                         button.toggle()
                     }
                 }

@@ -32,38 +32,30 @@ struct MapViewAlgoritm: UIViewRepresentable {
             annotation.title = point.name
             
             view.addAnnotation(annotation)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let userPoint = MKPlacemark(coordinate: vm.userLocation)
+                
+                let locationPoint1 = MKPlacemark(coordinate: annotation.coordinate)
+                let request = MKDirections.Request()
+                request.source = MKMapItem(placemark: userPoint)
+                request.destination = MKMapItem(placemark: locationPoint1)
+                request.transportType = .automobile
+                
+                let directions = MKDirections(request: request)
+                directions.calculate { response, error in
+                    guard let route = response else {
+                        if let error = error {
+                            print("Error calculating directions: \(error.localizedDescription)")
+                        }
+                        return
+                    }
+                    view.addOverlay(route.routes.first!.polyline)
+
+                }
+            }
         }
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//            let userPoint = MKPlacemark(coordinate: vm.userLocation)
-//            
-//            let point = MKPointAnnotation()
-//            point.title = vm.routePoints[12].name
-//            point.coordinate = vm.routePoints[12].coordinate
-//            
-//            
-//            let locationPoint1 = MKPlacemark(coordinate: vm.routePoints[12].coordinate)
-//            let request = MKDirections.Request()
-//            request.source = MKMapItem(placemark: userPoint)
-//            request.destination = MKMapItem(placemark: locationPoint1)
-//            request.transportType = .automobile
-//            
-//            let directions = MKDirections(request: request)
-//            directions.calculate { response, error in
-//                guard let route = response else {
-//                    if let error = error {
-//                        print("Error calculating directions: \(error.localizedDescription)")
-//                    }
-//                    return
-//                }
-//                mapView.addAnnotation(point)
-//                mapView.addOverlay(route.routes.first!.polyline)
-//                mapView.setVisibleMapRect(
-//                    route.routes.first!.polyline.boundingMapRect,
-//                    edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50),
-//                    animated: true)
-//            }
-//        }
+        
         
         // Настроить область отображения карты, чтобы вместить все точки маршрута
         if !routePoints.isEmpty {
@@ -114,7 +106,7 @@ struct MapViewAlgoritm: UIViewRepresentable {
         }
     }
     
-    // Функция для вычисления области отображения карты, чтобы вместить все маркеры
+    // Функция для вычисления области отображения карты, чтобы вместить все заказы
     private func regionForAnnotations(annotations: [MKAnnotation]) -> MKCoordinateRegion {
         var region = MKCoordinateRegion()
         guard let firstAnnotation = annotations.first else {
@@ -152,33 +144,30 @@ struct MapViewAlgoritm: UIViewRepresentable {
 }
 
 struct MapView: View {
-    @StateObject var vm = AlgoritmViewModel()
+    @EnvironmentObject private var vm: AlgoritmViewModel
     
     @State var button: Bool = false
+    let timer = Timer.publish(every: 10.0, on: .main, in: .common).autoconnect()
     
-    var locationManager = CLLocationManager()
-
     var body: some View {
         
         ZStack{
 //            Map(coordinateRegion: $vm.mapRegion, showsUserLocation: true)
-            MapViewAlgoritm( routePoints: [] )
+            MapViewAlgoritm( routePoints: vm.zakazGeo )
                 .ignoresSafeArea(.all)
                 .onAppear {
                     vm.checkIFLocationServicesIsEnabled()
                 }
             
-            Button(action: {
-                withAnimation {
-                    button.toggle()
-                }
-            }, label: {
-                Text("Button")
-            })
             NewZakaz(button: $button)
                 .padding(.top, UIScreen.main.bounds.height * 0.6)
                 .offset(y: button ? 0 : UIScreen.main.bounds.height)
             
+        }
+        .onReceive(timer) { _ in
+            withAnimation {
+                button = true
+            }
         }
     }
     

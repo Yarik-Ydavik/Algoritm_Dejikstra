@@ -22,8 +22,10 @@ class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     @Published var mapRegion = MKCoordinateRegion()
     
+    // Список точек, которые должны появляться на карте
     @Published var routePoints: [RoutePoint] = []
-    
+    // Список точек, которые передаются на карту
+    @Published var zakazGeo: [RoutePoint] = []
     override init() {
         mapLocation = CLLocationCoordinate2D(
             latitude: 37.331516,

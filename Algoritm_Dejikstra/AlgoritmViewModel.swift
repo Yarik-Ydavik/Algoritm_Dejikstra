@@ -13,8 +13,6 @@ import SwiftUI
 class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     @Published var userLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    
-    
     @Published var mapLocation : CLLocationCoordinate2D {
         didSet{
             updateLocation(location: mapLocation)
@@ -26,6 +24,10 @@ class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var routePoints: [RoutePoint] = []
     // Список точек, которые передаются на карту
     @Published var zakazGeo: [RoutePoint] = []
+    
+    // Список кэшированных маршрутов, для разгрузки приложения
+    private var routeCache = [String: MKRoute]()
+
     override init() {
         mapLocation = CLLocationCoordinate2D(
             latitude: 37.331516,
@@ -75,6 +77,85 @@ class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         
     }
+    
+    func addRoute(from pointStart: RoutePoint, to point: RoutePoint, on mapView: MKMapView) {
+        let startPoint = MKPlacemark(coordinate: pointStart.coordinate)
+        
+        // Святая корова
+        let endPoint = MKPlacemark(coordinate: point.coordinate)
+        
+        let key = "\(userLocation.latitude),\(userLocation.longitude)-\(point.coordinate.latitude),\(point.coordinate.longitude)"
+        
+        if let route = routeCache[key] {
+            mapView.addOverlay(route.polyline)
+        } else {
+            
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: startPoint)
+            request.destination = MKMapItem(placemark: endPoint)
+            request.transportType = .automobile
+            
+            let directions = MKDirections(request: request)
+            directions.calculate { response, error in
+                guard let route = response?.routes.first else {
+                    if let error = error {
+                        print("Error calculating directions: \(error.localizedDescription)")
+                    }
+                    return
+                }
+                
+                mapView.addOverlay(route.polyline)
+                self.routeCache[key] = route
+            }
+        }
+    }
+
+    // Функция для поиска короткого маршрута от точки до точки
+    func findShortRoute ( points: [RoutePoint] , to point: RoutePoint, on mapView: MKMapView) {
+        var routesCache = [RoutePoint : Double]()
+
+        var pointsO = points
+        pointsO.insert(RoutePoint(coordinate: userLocation, name: "Ваше местоположение"), at: 0)
+        pointsO.removeAll{ $0 == point }
+        
+        // Итерируемся по всем точкам и вычисляем расстояние до нужной точки
+        for p in pointsO {
+            let loc1 = CLLocation(latitude: point.coordinate.latitude, longitude: point.coordinate.longitude)
+            
+            let distance = loc1.distance(from: CLLocation(latitude: p.coordinate.latitude, longitude: p.coordinate.longitude))
+            routesCache[p] = distance
+        }
+        
+        if !routesCache.isEmpty, let indexShortRoute = routesCache.keys.sorted(by: { routesCache[$0]! < routesCache[$1]! }).firstIndex(of: routesCache.keys.min()!){
+            
+            for i in 0..<pointsO.count {
+                print(pointsO[i])
+                
+            }
+            print("")
+            print("Близкая точка: \(pointsO[indexShortRoute])")
+            print("Точка назначения: \(point)")
+            print("")
+            print("--------------------------")
+            print("")
+            addRoute(from: pointsO[indexShortRoute], to: point, on: mapView)
+            
+
+        }
+        
+//        var minDistance = Double.infinity
+//        var minPoint: RoutePoint?
+//
+//        for (currentPoint, currentDistance) in routesCache {
+//            if currentDistance < minDistance {
+//                minDistance = currentDistance
+//                minPoint = currentPoint
+//            }
+//        }
+
+
+    }
+    
     // Обновление карты при изменении геолокации и другой хрени
     func updateLocation(location: CLLocationCoordinate2D) {
         withAnimation(.easeInOut) {

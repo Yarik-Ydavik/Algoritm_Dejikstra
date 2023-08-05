@@ -26,36 +26,18 @@ struct MapViewAlgoritm: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
+
         for point in routePoints {
             let annotation = MKPointAnnotation()
             annotation.coordinate = point.coordinate
             annotation.title = point.name
             
             view.addAnnotation(annotation)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                let userPoint = MKPlacemark(coordinate: vm.userLocation)
-                
-                let locationPoint1 = MKPlacemark(coordinate: annotation.coordinate)
-                let request = MKDirections.Request()
-                request.source = MKMapItem(placemark: userPoint)
-                request.destination = MKMapItem(placemark: locationPoint1)
-                request.transportType = .automobile
-                
-                let directions = MKDirections(request: request)
-                directions.calculate { response, error in
-                    guard let route = response else {
-                        if let error = error {
-                            print("Error calculating directions: \(error.localizedDescription)")
-                        }
-                        return
-                    }
-                    view.addOverlay(route.routes.first!.polyline)
+            vm.findShortRoute( points: routePoints, to: point, on: view )
 
-                }
-            }
+//            vm.addRoute(to: point, on: view)
+            
         }
-        
-        
         
         // Настроить область отображения карты, чтобы вместить все точки маршрута
         if !routePoints.isEmpty {
@@ -66,44 +48,6 @@ struct MapViewAlgoritm: UIViewRepresentable {
             view.setRegion(region, animated: true)
         }
         
-    }
-    
-    func showRoute(_ route: MKRoute) {
-        mapView.removeOverlays(mapView.overlays)
-        mapView.addOverlay(route.polyline, level: .aboveRoads)
-
-        var zoomRect = route.polyline.boundingMapRect
-        let insets = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
-        zoomRect = mapView.mapRectThatFits(zoomRect, edgePadding: insets)
-        mapView.setVisibleMapRect(zoomRect, animated: true)
-    }
-
-    func calculateShortRoute(from start: CLLocationCoordinate2D, to end: CLLocationCoordinate2D, completion: @escaping ([MKRoute]) -> Void) {
-        var routes = [MKRoute]()
-
-        // Экземпляр MKDirectionsRequest с начальной и конечной точками
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: start))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: end))
-
-        // Создайте экземпляр MKDirections с использованием запроса
-        let directions = MKDirections(request: request)
-
-        // Вызовите метод calculate для расчета маршрута
-        directions.calculate { response, error in
-            guard let response = response else {
-                if let error = error {
-                    print("Error calculating directions: \(error)")
-                }
-                completion([])
-                return
-            }
-
-            // Добавьте маршрут в массив маршрутов
-            let route = response.routes[0]
-            routes.append(route)
-            completion(routes)
-        }
     }
     
     // Функция для вычисления области отображения карты, чтобы вместить все заказы
@@ -147,7 +91,7 @@ struct MapView: View {
     @EnvironmentObject private var vm: AlgoritmViewModel
     
     @State var button: Bool = false
-    let timer = Timer.publish(every: 10.0, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 20.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
         

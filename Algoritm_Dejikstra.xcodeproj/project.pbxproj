@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D71E34D62A72C13B00FAE858 /* ATQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E34D52A72C13B00FAE858 /* ATQueue.swift */; };
 		D79FE51C2A65C6F700B38A22 /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FE51B2A65C6F700B38A22 /* RoutePoint.swift */; };
 		D7B7AE512A644A660024CC38 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE502A644A660024CC38 /* MapView.swift */; };
 		D7B7AE552A644AC80024CC38 /* AlgoritmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE542A644AC80024CC38 /* AlgoritmViewModel.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D71E34D52A72C13B00FAE858 /* ATQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATQueue.swift; sourceTree = "<group>"; };
 		D79FE5182A6522F700B38A22 /* Algoritm-Dejikstra-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Algoritm-Dejikstra-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D79FE51B2A65C6F700B38A22 /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
 		D7B7AE502A644A660024CC38 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -39,9 +41,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D71E34D42A72C11B00FAE858 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				D71E34D52A72C13B00FAE858 /* ATQueue.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
 		D79FE51A2A65C6BD00B38A22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D71E34D42A72C11B00FAE858 /* Graph */,
 				D79FE51B2A65C6F700B38A22 /* RoutePoint.swift */,
 			);
 			path = Model;
@@ -168,6 +179,7 @@
 				D79FE51C2A65C6F700B38A22 /* RoutePoint.swift in Sources */,
 				D7B7AE512A644A660024CC38 /* MapView.swift in Sources */,
 				D7B7AE592A6463040024CC38 /* ZakazView.swift in Sources */,
+				D71E34D62A72C13B00FAE858 /* ATQueue.swift in Sources */,
 				D7B7AE552A644AC80024CC38 /* AlgoritmViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

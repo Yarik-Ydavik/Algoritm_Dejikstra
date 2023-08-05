@@ -27,7 +27,13 @@ class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // Список кэшированных маршрутов, для разгрузки приложения
     private var routeCache = [String: MKRoute]()
-
+    
+    // ====================================================================
+    // Начало
+    // Объявление переменной графа
+    
+    @Published var graph = EdgeWeightedDigraph<String>()
+    
     override init() {
         mapLocation = CLLocationCoordinate2D(
             latitude: 37.331516,
@@ -51,7 +57,9 @@ class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             RoutePoint(coordinate: CLLocationCoordinate2D(latitude: 51.7606353, longitude: 55.1085162), name: "Miss Wedding"),
             RoutePoint(coordinate: CLLocationCoordinate2D(latitude: 51.7672000, longitude: 55.0940404), name: "Яицкая улица 42"),
         ]
+        
         super.init()
+        
         
         locationManager.delegate = self
         updateLocation(location: mapLocation)
@@ -123,36 +131,24 @@ class AlgoritmViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             let loc1 = CLLocation(latitude: point.coordinate.latitude, longitude: point.coordinate.longitude)
             
             let distance = loc1.distance(from: CLLocation(latitude: p.coordinate.latitude, longitude: p.coordinate.longitude))
+            
+            //
+            //
+            // Создание точек для добавления на граф
+            let point1 = Vertex("\(p.name)")
+            let point2 = Vertex("\(point.name)")
+            
+            graph.addEdge(source: point1, destination: point2, weight: distance)
+            
             routesCache[p] = distance
         }
         
         if !routesCache.isEmpty, let indexShortRoute = routesCache.keys.sorted(by: { routesCache[$0]! < routesCache[$1]! }).firstIndex(of: routesCache.keys.min()!){
-            
-            for i in 0..<pointsO.count {
-                print(pointsO[i])
-                
-            }
-            print("")
-            print("Близкая точка: \(pointsO[indexShortRoute])")
-            print("Точка назначения: \(point)")
-            print("")
-            print("--------------------------")
-            print("")
+
             addRoute(from: pointsO[indexShortRoute], to: point, on: mapView)
             
 
         }
-        
-//        var minDistance = Double.infinity
-//        var minPoint: RoutePoint?
-//
-//        for (currentPoint, currentDistance) in routesCache {
-//            if currentDistance < minDistance {
-//                minDistance = currentDistance
-//                minPoint = currentPoint
-//            }
-//        }
-
 
     }
     

@@ -12,6 +12,15 @@
 		D7B7AE512A644A660024CC38 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE502A644A660024CC38 /* MapView.swift */; };
 		D7B7AE552A644AC80024CC38 /* AlgoritmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE542A644AC80024CC38 /* AlgoritmViewModel.swift */; };
 		D7B7AE592A6463040024CC38 /* ZakazView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7AE582A6463040024CC38 /* ZakazView.swift */; };
+		D7C0C0A52A7ED4480018DA3B /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0A42A7ED4480018DA3B /* Vertex.swift */; };
+		D7C0C0A72A7ED47D0018DA3B /* DirectEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0A62A7ED47D0018DA3B /* DirectEdge.swift */; };
+		D7C0C0A92A7ED4D00018DA3B /* EdgeWeightedDigraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0A82A7ED4D00018DA3B /* EdgeWeightedDigraph.swift */; };
+		D7C0C0AB2A7ED5050018DA3B /* SimplePriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0AA2A7ED5050018DA3B /* SimplePriorityQueue.swift */; };
+		D7C0C0AD2A7ED5340018DA3B /* DijkstraShortestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0AC2A7ED5340018DA3B /* DijkstraShortestPath.swift */; };
+		D7C0C0AF2A7ED5620018DA3B /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0AE2A7ED5620018DA3B /* Destination.swift */; };
+		D7C0C0B12A7ED5880018DA3B /* ATStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0B02A7ED5880018DA3B /* ATStack.swift */; };
+		D7C0C0B32A7ED5AE0018DA3B /* EdgeWeightedDirectedCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0B22A7ED5AE0018DA3B /* EdgeWeightedDirectedCycle.swift */; };
+		D7C0C0B52A7ED5E40018DA3B /* BellmanFordShortestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0C0B42A7ED5E40018DA3B /* BellmanFordShortestPath.swift */; };
 		D7E88B782A63263100010AFD /* Algoritm_DejikstraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E88B772A63263100010AFD /* Algoritm_DejikstraApp.swift */; };
 		D7E88B7C2A63263200010AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E88B7B2A63263200010AFD /* Assets.xcassets */; };
 		D7E88B7F2A63263200010AFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E88B7E2A63263200010AFD /* Preview Assets.xcassets */; };
@@ -24,6 +33,15 @@
 		D7B7AE502A644A660024CC38 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D7B7AE542A644AC80024CC38 /* AlgoritmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgoritmViewModel.swift; sourceTree = "<group>"; };
 		D7B7AE582A6463040024CC38 /* ZakazView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZakazView.swift; sourceTree = "<group>"; };
+		D7C0C0A42A7ED4480018DA3B /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		D7C0C0A62A7ED47D0018DA3B /* DirectEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectEdge.swift; sourceTree = "<group>"; };
+		D7C0C0A82A7ED4D00018DA3B /* EdgeWeightedDigraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeWeightedDigraph.swift; sourceTree = "<group>"; };
+		D7C0C0AA2A7ED5050018DA3B /* SimplePriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePriorityQueue.swift; sourceTree = "<group>"; };
+		D7C0C0AC2A7ED5340018DA3B /* DijkstraShortestPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DijkstraShortestPath.swift; sourceTree = "<group>"; };
+		D7C0C0AE2A7ED5620018DA3B /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		D7C0C0B02A7ED5880018DA3B /* ATStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATStack.swift; sourceTree = "<group>"; };
+		D7C0C0B22A7ED5AE0018DA3B /* EdgeWeightedDirectedCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeWeightedDirectedCycle.swift; sourceTree = "<group>"; };
+		D7C0C0B42A7ED5E40018DA3B /* BellmanFordShortestPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellmanFordShortestPath.swift; sourceTree = "<group>"; };
 		D7E88B742A63263100010AFD /* Algoritm_Dejikstra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algoritm_Dejikstra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E88B772A63263100010AFD /* Algoritm_DejikstraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algoritm_DejikstraApp.swift; sourceTree = "<group>"; };
 		D7E88B7B2A63263200010AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				D71E34D52A72C13B00FAE858 /* ATQueue.swift */,
+				D7C0C0A42A7ED4480018DA3B /* Vertex.swift */,
+				D7C0C0A62A7ED47D0018DA3B /* DirectEdge.swift */,
+				D7C0C0A82A7ED4D00018DA3B /* EdgeWeightedDigraph.swift */,
+				D7C0C0AA2A7ED5050018DA3B /* SimplePriorityQueue.swift */,
+				D7C0C0AC2A7ED5340018DA3B /* DijkstraShortestPath.swift */,
+				D7C0C0AE2A7ED5620018DA3B /* Destination.swift */,
+				D7C0C0B02A7ED5880018DA3B /* ATStack.swift */,
+				D7C0C0B22A7ED5AE0018DA3B /* EdgeWeightedDirectedCycle.swift */,
+				D7C0C0B42A7ED5E40018DA3B /* BellmanFordShortestPath.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -176,10 +203,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7E88B782A63263100010AFD /* Algoritm_DejikstraApp.swift in Sources */,
+				D7C0C0B52A7ED5E40018DA3B /* BellmanFordShortestPath.swift in Sources */,
+				D7C0C0AB2A7ED5050018DA3B /* SimplePriorityQueue.swift in Sources */,
+				D7C0C0B12A7ED5880018DA3B /* ATStack.swift in Sources */,
+				D7C0C0AF2A7ED5620018DA3B /* Destination.swift in Sources */,
+				D7C0C0AD2A7ED5340018DA3B /* DijkstraShortestPath.swift in Sources */,
 				D79FE51C2A65C6F700B38A22 /* RoutePoint.swift in Sources */,
 				D7B7AE512A644A660024CC38 /* MapView.swift in Sources */,
+				D7C0C0A72A7ED47D0018DA3B /* DirectEdge.swift in Sources */,
+				D7C0C0B32A7ED5AE0018DA3B /* EdgeWeightedDirectedCycle.swift in Sources */,
 				D7B7AE592A6463040024CC38 /* ZakazView.swift in Sources */,
 				D71E34D62A72C13B00FAE858 /* ATQueue.swift in Sources */,
+				D7C0C0A52A7ED4480018DA3B /* Vertex.swift in Sources */,
+				D7C0C0A92A7ED4D00018DA3B /* EdgeWeightedDigraph.swift in Sources */,
 				D7B7AE552A644AC80024CC38 /* AlgoritmViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

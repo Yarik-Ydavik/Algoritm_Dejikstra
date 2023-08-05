@@ -34,8 +34,6 @@ struct MapViewAlgoritm: UIViewRepresentable {
             
             view.addAnnotation(annotation)
             vm.findShortRoute( points: routePoints, to: point, on: view )
-
-//            vm.addRoute(to: point, on: view)
             
         }
         

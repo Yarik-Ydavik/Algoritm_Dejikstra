@@ -11,6 +11,17 @@ struct NewZakaz: View {
     @Binding var button: Bool
     @EnvironmentObject private var vm: AlgoritmViewModel
     
+    func performBellmanFord() {
+        let point = Vertex("Ваше местоположение")
+        let bellmanFord = BellmanFordShortestPath(vm.graph, source: point)
+        
+        print(vm.graph.vertices.count)
+        
+        print("Has negative cycle: \(bellmanFord.hasNegativeCycle)")
+        print("Negative cycle: \(String(describing: bellmanFord.negativeCycle))")
+    }
+
+    
     var body: some View {
         ZStack () {
             Color.white
@@ -18,6 +29,8 @@ struct NewZakaz: View {
                 .ignoresSafeArea(.all)
             
             HStack ( ) {
+                
+                
                 Button("Принять заказ") {
                     withAnimation {
                         guard let element: RoutePoint = vm.routePoints.randomElement() else {
@@ -25,7 +38,10 @@ struct NewZakaz: View {
                         }
                         vm.routePoints.remove(at: vm.routePoints.firstIndex(where: { $0.coordinate.latitude == element.coordinate.latitude })!)
                         vm.zakazGeo.append(element)
+                        performBellmanFord()
                         button.toggle()
+                        
+
                     }
                 }
                 .foregroundStyle(.white)

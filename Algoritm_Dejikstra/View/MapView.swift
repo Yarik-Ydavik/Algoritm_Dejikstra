@@ -89,7 +89,7 @@ struct MapView: View {
     @EnvironmentObject private var vm: AlgoritmViewModel
     
     @State var button: Bool = false
-    let timer = Timer.publish(every: 20.0, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
